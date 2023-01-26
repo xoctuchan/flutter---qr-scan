@@ -7,6 +7,7 @@ import 'package:qr_reader/providers/ui_provider.dart';
 import 'package:qr_reader/widgets/custom_navigationbar.dart';
 import 'package:qr_reader/widgets/scan_button.dart';
 
+import '../providers/db_provider.dart';
 import '../providers/ui_provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -39,6 +40,11 @@ class _HomePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
     final currentIndex = uiProvider.selectedMenuOpt;
+    final tempScan = new ScanModel(valor: 'http://www.google.com');
+    //final intTemp = DBProvider.db.nuevoScan(tempScan);
+    DBProvider.db.getAllScan().then(print);
+    //print(intTemp);
+
     switch (currentIndex) {
       case 0:
         return const MapaPage();
